@@ -1,0 +1,43 @@
+/* Yekan */
+
+@font-face {
+    font-family: 'Yekan';
+    src: url('../fonts/WebYekan.eot?#') format('eot'), /* IE6–8 */
+    url('../fonts/WebYekan.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/WebYekan.ttf') format('truetype');
+    /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+
+/* iransans */
+
+@font-face {
+    font-family: 'sans';
+    src: url('../fonts/IRANSANSExpanded.eot?#') format('eot'), /* IE6–8 */
+    url('../fonts/IRANSANSExpanded.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/IRANSANSExpanded.woff2') format('woff2');
+    /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+    font-weight: normal;
+}
+
+
+/* iransans */
+
+@font-face {
+    font-family: 'sans';
+    src: url('../fonts/IRANSans-Bold.eot?#') format('eot'), /* IE6–8 */
+    url('../fonts/IRANSans-Bold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../fonts/IRANSans-Bold.woff2') format('woff2');
+    /* Saf3—5, Chrome4+, FF3.5, Opera 10+ */
+    font-weight: bold;
+}
+
+body {
+    font-family: sans;
+    font-size: 14px;
+    background-color: #f5f5f5;
+}
+
+ul{
+    list-style: none;
+}
