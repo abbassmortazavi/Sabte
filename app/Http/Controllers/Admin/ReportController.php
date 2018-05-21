@@ -111,7 +111,7 @@ class ReportController extends Controller
 
         foreach ($kols as $kol)
         {
-            dd($kol);//test baraye commit
+            dd($kol);
         }
 
         return view('admin.report.user' , compact('orders' , 'kols'));
