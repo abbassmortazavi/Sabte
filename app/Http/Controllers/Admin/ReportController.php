@@ -107,14 +107,33 @@ class ReportController extends Controller
         $kols = DB::table('sabtes')
             ->where('user_id' , $request->user_id)
             ->where('tarikh_sabt' , $date)
-            ->select('name_masoul_motahel' , 'name_semmat_madou')->get();
+            ->select('tedad_goldan_tabiee' , 'name_masoul_motahel')->get();
 
-        foreach ($kols as $kol)
+            $lists = array();
+            foreach ($kols as $kol)
+            {
+                array_push($lists , $kol);
+            }
+
+        //tedad_goldan_tabiee
+        $tedad_goldan_tabiees = array_column($lists, 'tedad_goldan_tabiee');
+            $tedad_tabiees = array();
+            foreach ($tedad_goldan_tabiees as $tabiee)
+            {
+                array_push($tedad_tabiees , $tabiee);
+            }
+        $data['tedad_goldan_tabiee'] = implode(',' , $tedad_tabiees);
+
+        //name_masoul_motahel
+        $name_masoul_motahels = array_column($lists, 'name_masoul_motahel');
+        $name_masouls = array();
+        foreach ($name_masoul_motahels as $masoul_motahel)
         {
-            dd($kol);
+            array_push($name_masouls , $masoul_motahel);
         }
+        $data['name_masoul_motahel'] = implode(',' , $name_masouls);
 
-        return view('admin.report.user' , compact('orders' , 'kols'));
+        return view('admin.report.user' , compact('orders' , 'data'));
 
         //shamsi to convert miladi
         /*$v = Verta::parse($request->date_now);

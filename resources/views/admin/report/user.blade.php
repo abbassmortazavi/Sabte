@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    @foreach($kols as $kol)
+
         <div class="row" style="margin-bottom: 40px;">
             <div class="col-md-4">
                 <div class="form-group">
@@ -107,7 +107,7 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">تعداد گلدان های طبیعی:</label>
                         <input type="text" class="form-control" name="tedad_goldan_tabiee" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $data['tedad_goldan_tabiee'] }}">
                     </div>
 
                     <div class="form-group">
@@ -210,7 +210,7 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">نام مسئول هیئت:</label>
                         <input type="text" class="form-control" name="name_masoul_motahel" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $data['name_masoul_motahel'] }}">
                     </div>
 
                     <div class="form-group">
@@ -317,7 +317,7 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">موضوع این ماه:</label>
                         <input type="text" class="form-control" name="mozo_in_mah" id="usr"
-                               style="width: 20%; float: left;" value="{{ $kol->mozo_in_mah }}">
+                               style="width: 20%; float: left;" value="">
                     </div>
                 </div>
             </div>
@@ -416,7 +416,7 @@
                             <div class="form-group">
                                 <label for="usr" style="direction: rtl;">موضوع هفته اول:</label>
                                 <input type="text" class="form-control" name="mozo_hafte4" id="usr"
-                                       style="width: 58%; float: left;" value="{{ $kol->mozo_hafte4 }}">
+                                       style="width: 58%; float: left;" value="">
                             </div>
                         </div>
                     </div>
@@ -656,7 +656,6 @@
             </div>
         </div>
 
-    @endforeach
 @endsection
 
 @section('script')
