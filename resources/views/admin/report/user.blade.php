@@ -9,8 +9,8 @@
     <div class="row">
         <div class="col-sm-12">
                 <span class="float-right">
-                    تاریخ شروع نیم سال دوم
-                    <span>1397/00/00</span>
+                    تاریخ گزارش
+                    <span>{{ $data['date'] }}</span>
                  </span>
         </div>
     </div>
@@ -60,27 +60,21 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">ساعت بیداری:</label>
                         <input type="text" class="form-control" name="saat_bidari" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $data['saat_bidari'] }}">
                     </div>
 
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">ساعت خواب:</label>
                         <input type="text" class="form-control" name="saat_khab" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $data['saat_khab'] }}">
                     </div>
                 </div>
 
                 {{--ایجاد نشاط درسحر--}}
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="direction: rtl;">نشاط در سحر:</label>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="neshat_dar_sahar[]" value="دمنوش"
-                                      style="float: none !important;margin-right: 0px !important;">دم نوش</label>
-                        <label><input type="checkbox" name="neshat_dar_sahar[]" value="آبجوش"
-                                      style="float: none !important;margin-right: 0px !important;">آبجوش</label>
-                        <label><input type="checkbox" name="neshat_dar_sahar[]" value="چای"
-                                      style="float: none !important;margin-right: 0px !important;">چای</label>
-                    </div>
+                    <input type="text" class="form-control" name="saat_khab" id="usr"
+                           style="width: 20%; float: left;" value="{{ $data['neshat_dar_sahar'] }}">
                 </div>
 
                 {{--برنامه صبحگاهی و صبحانه--}}

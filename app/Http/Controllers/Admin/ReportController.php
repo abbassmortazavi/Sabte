@@ -97,7 +97,6 @@ class ReportController extends Controller
 
         $date = jDateTime::createCarbonFromFormat('Y-m-d',$request->date_now)->toDateString();
 
-
         $orders = DB::table('sabtes')
             ->where('user_id' , $request->user_id)
             ->where('tarikh_sabt' , $date)
@@ -107,13 +106,59 @@ class ReportController extends Controller
         $kols = DB::table('sabtes')
             ->where('user_id' , $request->user_id)
             ->where('tarikh_sabt' , $date)
-            ->select('tedad_goldan_tabiee' , 'name_masoul_motahel')->get();
+            ->select('saat_khab','saat_bidari','neshat_dar_sahar','tedad_goldan_tabiee' , 'name_masoul_motahel')->get();
+
+
+        //date now
+        $data['date'] = jDateTime::strftime('Y-m-d', strtotime($date));
+
 
             $lists = array();
             foreach ($kols as $kol)
             {
                 array_push($lists , $kol);
             }
+
+
+
+        //saat_khab
+        $saat_khabs = array_column($lists, 'saat_khab');
+        $saat_khabss = array();
+        foreach ($saat_khabs as $khab)
+        {
+            array_push($saat_khabss , $khab);
+        }
+        $data['saat_khab'] = implode(',' , $saat_khabss);
+
+
+
+        //saat_bidari
+        $saat_bidaris = array_column($lists, 'saat_bidari');
+        $saat_bidariss = array();
+        foreach ($saat_bidaris as $bidaris)
+        {
+            array_push($saat_bidariss , $bidaris);
+        }
+        $data['saat_bidari'] = implode(',' , $saat_bidariss);
+
+
+
+
+        //neshat_dar_sahar
+        $neshat_dar_sahars = array_unique(array_column($lists, 'neshat_dar_sahar'));
+
+        $neshat_dar_saharss = array();
+        foreach ($neshat_dar_sahars as $dar_sahar)
+        {
+            array_push($neshat_dar_saharss , $dar_sahar);
+        }
+
+        $neshat_dar_sahar = implode(',' , $neshat_dar_saharss);
+
+        $data['neshat_dar_sahar'] = rtrim($neshat_dar_sahar,',');
+
+        dd($data['neshat_dar_sahar']);
+
 
         //tedad_goldan_tabiee
         $tedad_goldan_tabiees = array_column($lists, 'tedad_goldan_tabiee');
@@ -124,6 +169,7 @@ class ReportController extends Controller
             }
         $data['tedad_goldan_tabiee'] = implode(',' , $tedad_tabiees);
 
+
         //name_masoul_motahel
         $name_masoul_motahels = array_column($lists, 'name_masoul_motahel');
         $name_masouls = array();
@@ -133,7 +179,28 @@ class ReportController extends Controller
         }
         $data['name_masoul_motahel'] = implode(',' , $name_masouls);
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return view('admin.report.user' , compact('orders' , 'data'));
+
+
+
+
+
 
         //shamsi to convert miladi
         /*$v = Verta::parse($request->date_now);

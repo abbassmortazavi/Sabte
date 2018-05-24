@@ -12,19 +12,20 @@
     <form action="{{ route('findUser') }}" method="post">
         {{ csrf_field() }}
         <div class="form-group">
-            <label for="sel1">Select list:</label>
-            <select name="user_id" class="form-control" id="sel1" style="width: 35%;">
+            <label for="sel1" style="float: right;padding-left: 15px;">کاربر مورد نظر خود را از روی لیست انتخاب کنید:</label>
+            <select name="user_id" class="form-control" id="sel1" style="width: 17%;float: right;">
                 @foreach($users as $user)
                     <option value="{{ $user->id }}">{{ $user->name }}</option>
                 @endforeach
             </select>
-            <input type="text" name="date_now" placeholder="dark" id="pdpDark" class="form-control" />
-            <input type="text" name="date_last" placeholder="dark" id="pdpDark1" class="form-control" />
+            <label for="sel1" style="float: right;padding-left: 15px;">تاریخ مورد نظر خود را انتخاب کنید:</label>
+            <input type="text" name="date_now" placeholder="dark" id="pdpDark" class="form-control" style="width: 20%;">
+            {{--<input type="text" name="date_last" placeholder="dark" id="pdpDark1" class="form-control" />--}}
 
         </div>
 
         <div class="form-group">
-            <input type="submit" class="btn btn-primary">
+            <input type="submit" class="btn btn-primary pull-left">
         </div>
     </form>
 
