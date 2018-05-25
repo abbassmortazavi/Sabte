@@ -152,6 +152,7 @@ return [
          */
         Morilog\Jalali\JalaliServiceProvider::class,
         Hekmatinasser\Verta\VertaServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
         /*
          * Application Service Providers...
          */

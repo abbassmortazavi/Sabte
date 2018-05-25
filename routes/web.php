@@ -43,7 +43,6 @@ Route::group(['namespace' => 'Admin','middleware' => 'admin' , 'prefix' => 'admi
 
 
 
-
 Route::resource('sabte' , 'SabteController');
 Auth::routes();
 
