@@ -80,18 +80,8 @@
                 {{--برنامه صبحگاهی و صبحانه--}}
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="direction: rtl;">برنامه صبحگاهی و صبحانه:</label>
-                    <div class="checkbox">
-                        <label><input type="checkbox" name="barname_sobhgahi_sobhane[]" value="قرائت قرآن"
-                                      style="float: none !important;margin-right: 0px !important;">قرائت قرآن
-                        </label>
-                        <label><input type="checkbox" name="barname_sobhgahi_sobhane[]" value="نرمش"
-                                      style="float: none !important;margin-right: 0px !important;">نرمش</label>
-                        <label><input type="checkbox" name="barname_sobhgahi_sobhane[]" value="دعای امام زمان"
-                                      style="float: none !important;margin-right: 0px !important;">دعای امام
-                            زمان</label>
-                        <label><input type="checkbox" name="barname_sobhgahi_sobhane[]" value="صبحانه"
-                                      style="float: none !important;margin-right: 0px !important;">صبحانه</label>
-                    </div>
+                    <input type="text" class="form-control" name="saat_khab" id="usr"
+                           style="width: 20%; float: left;" value="{{ $data['barname_sobhgahi_sobhane'] }}">
                 </div>
 
                 {{--حفظ و ارتقا فضای سبز--}}
@@ -101,19 +91,19 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">تعداد گلدان های طبیعی:</label>
                         <input type="text" class="form-control" name="tedad_goldan_tabiee" id="usr"
-                               style="width: 20%; float: left;" value="{{ $data['tedad_goldan_tabiee'] }}">
+                               style="width: 20%; float: left;" value="{{ $orders->tedad_goldan_tabiee }}">
                     </div>
 
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">تعداد درختان:</label>
                         <input type="text" class="form-control" name="tedad_derakhtan" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $orders->tedad_derakhtan }}">
                     </div>
 
                     <div class="form-group">
-                        <label for="usr" style="direction: rtl;">ساخت تولید سبزیجات:</label>
+                        <label for="usr" style="direction: rtl;">مساحت تولید سبزیجات:</label>
                         <input type="text" class="form-control" name="masahat_tolid_sabzijat" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $orders->masahat_tolid_sabzijat }}">
                     </div>
                 </div>
 
@@ -124,13 +114,13 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">درصدنظافت کلاس ها:</label>
                         <input type="text" class="form-control" name="darsad_nezafat_dar_class" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $orders->darsad_nezafat_dar_class }}">
                     </div>
 
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">روزهای نظافت:</label>
                         <input type="text" class="form-control" name="rozhaye_nezafat" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $data['rozhaye_nezafat'] }}">
                     </div>
                 </div>
 
@@ -141,19 +131,19 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">ساعت کار کتابخانه:</label>
                         <input type="text" class="form-control" name="saat_kar_ketabkhune" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $data['saat_kar_ketabkhune'] }}">
                     </div>
 
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">درصد نظم:</label>
                         <input type="text" class="form-control" name="darsad_nazm" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $orders->darsad_nazm }}">
                     </div>
 
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">درصد نظافت:</label>
                         <input type="text" class="form-control" name="darsad_nezafat" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $orders->darsad_nezafat }}">
                     </div>
                 </div>
 
