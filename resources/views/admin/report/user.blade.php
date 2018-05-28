@@ -154,13 +154,13 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">تعداد مهمانان این ماه:</label>
                         <input type="text" class="form-control" name="tedad_mehmanan_in_mah" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $orders->tedad_mehmanan_in_mah }}">
                     </div>
 
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">درصد رضایت مهمانان از پذیرایی:</label>
                         <input type="text" class="form-control" name="darsad_rezayat_mehmanan" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $orders->darsad_rezayat_mehmanan }}">
                     </div>
                 </div>
 
@@ -171,13 +171,13 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">نام مسئول هیئت:</label>
                         <input type="text" class="form-control" name="name_masoul_khabgah" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $data['name_masoul_khabgah'] }}">
                     </div>
 
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">تعداد جلسات این ماه:</label>
                         <input type="text" class="form-control" name="tedad_jalasat_in_mah_khabgah" id="usr"
-                               style="width: 20%; float: left;">
+                               style="width: 20%; float: left;" value="{{ $orders->tedad_jalasat_in_mah_khabgah }}">
                     </div>
 
                     <div class="form-group">

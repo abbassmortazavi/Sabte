@@ -100,13 +100,17 @@ class ReportController extends Controller
         $orders = DB::table('sabtes')
             ->where('user_id' , $request->user_id)//
             ->where('tarikh_sabt' , $date)
-           ->select(DB::raw('SUM(ba_hozore2) as ba_hozore2,SUM(darsad_nazm) as darsad_nazm,SUM(darsad_nezafat) as darsad_nezafat,SUM(darsad_nezafat_dar_class) as darsad_nezafat_dar_class,SUM(masahat_tolid_sabzijat) as masahat_tolid_sabzijat,SUM(madrese_elmiye) as madrese_elmiye,SUM(tedad_derakhtan) as tedad_derakhtan,SUM(tedade_hafezin) as tedade_hafezin,SUM(tedad_goldan_tabiee) as tedad_goldan_tabiee'))
+           ->select(DB::raw('SUM(ba_hozore2) as ba_hozore2,SUM(darsad_nazm) as darsad_nazm,sum(darsad_rezayat_mehmanan) as darsad_rezayat_mehmanan,
+           SUM(tedad_mehmanan_in_mah) as tedad_mehmanan_in_mah,SUM(darsad_nezafat) as darsad_nezafat,SUM(darsad_nezafat_dar_class) as darsad_nezafat_dar_class,
+           SUM(masahat_tolid_sabzijat) as masahat_tolid_sabzijat,SUM(madrese_elmiye) as madrese_elmiye,sum(tedad_jalasat_in_mah_khabgah) as tedad_jalasat_in_mah_khabgah,
+           SUM(tedad_derakhtan) as tedad_derakhtan,SUM(tedade_hafezin) as tedade_hafezin,SUM(tedad_goldan_tabiee) as tedad_goldan_tabiee'))
            ->first();
 
         $kols = DB::table('sabtes')
             ->where('user_id' , $request->user_id)
             ->where('tarikh_sabt' , $date)
-            ->select('saat_khab','saat_bidari','neshat_dar_sahar','barname_sobhgahi_sobhane','tedad_goldan_tabiee','rozhaye_nezafat','saat_kar_ketabkhune','name_masoul_motahel')->get();
+            ->select('saat_khab','saat_bidari','neshat_dar_sahar','barname_sobhgahi_sobhane','tedad_goldan_tabiee','rozhaye_nezafat',
+                'saat_kar_ketabkhune','name_masoul_khabgah','name_masoul_motahel')->get();
 
 
         //date now
@@ -161,6 +165,19 @@ class ReportController extends Controller
             array_push($saat_bidariss , $bidaris);
         }
         $data['saat_bidari'] = implode(',' , $saat_bidariss);
+
+
+
+        //name_masoul_khabgah
+        $name_masoul_khabgahs = array_column($lists, 'name_masoul_khabgah');
+        $name_masoul_khabgahss = array();
+        foreach ($name_masoul_khabgahs as $khabgah)
+        {
+            array_push($name_masoul_khabgahss , $khabgah);
+        }
+        $khabgahs = implode(',' , $name_masoul_khabgahss);
+        $khabgahsss = implode(',', array_unique(explode(',',$khabgahs)));
+        $data['name_masoul_khabgah'] = rtrim($khabgahsss,',');
 
 
 
