@@ -13,7 +13,7 @@
 use App\Sabte;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-
+//ddd
 Route::get('/', function () {
 
     /*$orders = DB::table('sabtes')
