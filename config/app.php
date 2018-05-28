@@ -152,6 +152,7 @@ return [
          */
         Morilog\Jalali\JalaliServiceProvider::class,
         Hekmatinasser\Verta\VertaServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -211,6 +212,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'jDate' => Morilog\Jalali\Facades\jDate::class,
         'Verta' => Hekmatinasser\Verta\Verta::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

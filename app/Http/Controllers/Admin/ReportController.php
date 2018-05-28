@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Sabte;
 use App\User;
+use Barryvdh\DomPDF\PDF;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
@@ -239,9 +240,9 @@ class ReportController extends Controller
         //dd($t);
     }
 
-    public function print(Request $request)
+    public function printPreview(Request $request)
     {
-        $date = jDateTime::createCarbonFromFormat('Y-m-d',$request->date_now)->toDateString();
+        /*$date = jDateTime::createCarbonFromFormat('Y-m-d',$request->date_now)->toDateString();
 
         $orders = DB::table('sabtes')
             ->where('user_id' , $request->user_id)//
@@ -366,13 +367,15 @@ class ReportController extends Controller
         {
             array_push($name_masouls , $masoul_motahel);
         }
-        $data['name_masoul_motahel'] = implode(',' , $name_masouls);
+        $data['name_masoul_motahel'] = implode(',' , $name_masouls);*/
 
 
 
 
 
-        return view('admin.report.print' , compact('orders' , 'data'));
+        $pdf =  PDF::loadView('admin.report.print');
+        return $pdf->download('print.pdf');
+
     }
 
 }
