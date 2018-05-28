@@ -152,7 +152,11 @@ return [
          */
         Morilog\Jalali\JalaliServiceProvider::class,
         Hekmatinasser\Verta\VertaServiceProvider::class,
+<<<<<<< HEAD
         Barryvdh\DomPDF\ServiceProvider::class,
+=======
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,
+>>>>>>> a41530c14413bb930f7bdb3874783290af9fbe35
         /*
          * Application Service Providers...
          */
