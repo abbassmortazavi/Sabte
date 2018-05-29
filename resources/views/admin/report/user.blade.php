@@ -10,7 +10,7 @@
         <div class="col-sm-12">
                 <span class="float-right">
                     تاریخ گزارش
-                    <span>{{ $data['date'] }}</span>
+                    <span></span>
                  </span>
         </div>
     </div>
@@ -60,31 +60,104 @@
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">ساعت بیداری:</label>
                         <input type="text" class="form-control" name="saat_bidari" id="usr"
-                               style="width: 20%; float: left;" value="{{ $data['saat_bidari'] }}">
+                               style="width: 20%; float: left;" value="">
                     </div>
 
                     <div class="form-group">
                         <label for="usr" style="direction: rtl;">ساعت خواب:</label>
                         <input type="text" class="form-control" name="saat_khab" id="usr"
-                               style="width: 20%; float: left;" value="{{ $data['saat_khab'] }}">
+                               style="width: 20%; float: left;" value="">
                     </div>
                 </div>
 
                 {{--ایجاد نشاط درسحر--}}
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="direction: rtl;">نشاط در سحر:</label>
-                    <input type="text" class="form-control" name="saat_khab" id="usr"
-                           style="width: 20%; float: left;" value="{{ $data['neshat_dar_sahar'] }}">
+
+                    <div class="form-group">
+                        <label for="usr">دمنوش:</label>
+                        <input type="text" class="form-control" name="damNosh" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['damNosh'])){{ $data['damNosh']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">چای:</label>
+                        <input type="text" class="form-control" name="chai" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['chai'])){{ $data['chai']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">آبجوش:</label>
+                        <input type="text" class="form-control" name="abJosh" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['abJosh'])){{ $data['abJosh']}}@endif">
+                    </div>
                 </div>
 
+
                 {{--برنامه صبحگاهی و صبحانه--}}
+                <div class="form-group" style="margin-top: 72px;">
+                    <label for="usr" style="direction: rtl;">برنامه صبحگاهی و صبحانه:</label>
+
+                    <div class="form-group">
+                        <label for="usr">صبحانه:</label>
+                        <input type="text" class="form-control" name="sobhanee" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['sobhanee'])){{ $data['sobhanee']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">نرمش:</label>
+                        <input type="text" class="form-control" name="narMesh" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['narMesh'])){{ $data['narMesh']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">دعای امام زمان:</label>
+                        <input type="text" class="form-control" name="doa" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['doa'])){{ $data['doa']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">قرائت قرآن:</label>
+                        <input type="text" class="form-control" name="gharaat" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['gharaat'])){{ $data['gharaat']}}@endif">
+                    </div>
+
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+              {{--  --}}{{--برنامه صبحگاهی و صبحانه--}}{{--
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="direction: rtl;">برنامه صبحگاهی و صبحانه:</label>
                     <input type="text" class="form-control" name="saat_khab" id="usr"
                            style="width: 20%; float: left;" value="{{ $data['barname_sobhgahi_sobhane'] }}">
                 </div>
 
-                {{--حفظ و ارتقا فضای سبز--}}
+                --}}{{--حفظ و ارتقا فضای سبز--}}{{--
                 <div class="form-group" style="margin-bottom: 72px;">
                     <label for="usr" style="margin-bottom: 30px;direction: rtl;">حفظ و ارتقا فضای سبز:</label>
 
@@ -107,7 +180,7 @@
                     </div>
                 </div>
 
-                {{--نظم و نظافت کلاس ها--}}
+                --}}{{--نظم و نظافت کلاس ها--}}{{--
                 <div class="form-group" style="margin-bottom: 72px;">
                     <label for="usr" style="margin-bottom: 30px;direction: rtl;">نظم و نظافت کلاس ها:</label>
 
@@ -124,7 +197,7 @@
                     </div>
                 </div>
 
-                {{--نظم و اداره کتابخانه--}}
+                --}}{{--نظم و اداره کتابخانه--}}{{--
                 <div class="form-group" style="margin-bottom: 72px;">
                     <label for="usr" style="margin-bottom: 30px;direction: rtl;">نظم و اداره کتابخانه:</label>
 
@@ -147,7 +220,7 @@
                     </div>
                 </div>
 
-                {{--پذیرایی از مهمانان--}}
+                --}}{{--پذیرایی از مهمانان--}}{{--
                 <div class="form-group" style="margin-bottom: 72px;">
                     <label for="usr" style="margin-bottom: 30px;direction: rtl;">پذیرایی از مهمانان:</label>
 
@@ -164,7 +237,7 @@
                     </div>
                 </div>
 
-                {{--هیئت طلاب خوابگاهی--}}
+                --}}{{--هیئت طلاب خوابگاهی--}}{{--
                 <div class="form-group" style="margin-bottom: 72px;">
                     <label for="usr" style="margin-bottom: 30px;direction: rtl;">هیئت طلاب خوابگاهی:</label>
 
@@ -187,7 +260,7 @@
                     </div>
                 </div>
 
-                {{--هیئت طلاب متهل--}}
+                --}}{{--هیئت طلاب متهل--}}{{--
                 <div class="form-group" style="margin-bottom: 72px;">
                     <label for="usr" style="margin-bottom: 30px;direction: rtl;">هیئت طلاب متهل:</label>
 
@@ -210,7 +283,7 @@
                     </div>
                 </div>
 
-                {{--اعیاد و عزا داری ها(داخل مدرسه)--}}
+                --}}{{--اعیاد و عزا داری ها(داخل مدرسه)--}}{{--
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="direction: rtl;">اعیاد و عزا داری ها(داخل مدرسه):</label>
                     <div class="checkbox">
@@ -226,7 +299,7 @@
                     </div>
                 </div>
 
-                {{--اعیاد و عزا داری ها(خارج مدرسه)--}}
+                --}}{{--اعیاد و عزا داری ها(خارج مدرسه)--}}{{--
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="direction: rtl;">اعیاد و عزا داری ها(خارج مدرسه):</label>
                     <div class="checkbox">
@@ -242,7 +315,7 @@
                     </div>
                 </div>
 
-                {{--بصیرت دشمن شناسی و حفظ روحیه ی انقلابی--}}
+                --}}{{--بصیرت دشمن شناسی و حفظ روحیه ی انقلابی--}}{{--
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="direction: rtl;">بصیرت دشمن شناسی و حفظ روحیه ی
                         انقلابی:</label>
@@ -265,7 +338,7 @@
                     </div>
                 </div>
 
-                {{--شام طلاب--}}
+                --}}{{--شام طلاب--}}{{--
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="direction: rtl;">شام طلاب:</label>
                     <div class="checkbox">
@@ -281,14 +354,14 @@
             </div>
         </div>
 
-        {{--برنامه شمیم احکام--}}
+        --}}{{--برنامه شمیم احکام--}}{{--
         <div class="row">
             <div class="col-md-3">
                 <h3 class="text-info" style="font-size: 20px;">برنامه شمیم احکام</h3>
             </div>
             <div class="col-md-9">
 
-                {{--برنامه شمیم احکام--}}
+                --}}{{--برنامه شمیم احکام--}}{{--
                 <div class="form-group" style="margin-top: 72px;">
                     <label for="usr" style="float: right;direction: rtl;">برنامه شمیم احکام:</label>
 
@@ -307,7 +380,7 @@
             </div>
         </div>
 
-        {{--درس اخلاق عمومی--}}
+        --}}{{--درس اخلاق عمومی--}}{{--
         <div class="row">
             <div class="col-md-3">
                 <h3 class="text-info" style="font-size: 20px;">درس اخلاق عمومی</h3>
@@ -432,7 +505,7 @@
             </div>
         </div>
 
-        {{--حضور ناظر شب--}}
+        --}}{{--حضور ناظر شب--}}{{--
         <div class="row">
             <div class="col-md-3">
                 <h3 class="text-info" style="font-size: 20px;">حضور ناظر شب</h3>
@@ -458,7 +531,7 @@
             </div>
         </div>
 
-        {{--قرائت قرآن روزانه--}}
+        --}}{{--قرائت قرآن روزانه--}}{{--
         <div class="row">
             <div class="col-md-3">
                 <h3 class="text-info" style="font-size: 20px;">قرائت قرآن روزانه</h3>
@@ -481,7 +554,7 @@
             </div>
         </div>
 
-        {{--ورزش عمومی طلاب--}}
+        --}}{{--ورزش عمومی طلاب--}}{{--
         <div class="row">
             <div class="col-md-3">
                 <h3 class="text-info" style="font-size: 20px;">ورزش عمومی طلاب</h3>
@@ -510,7 +583,7 @@
             </div>
         </div>
 
-        {{--برگزاری آموزش دفاعی--}}
+        --}}{{--برگزاری آموزش دفاعی--}}{{--
         <div class="row">
             <div class="col-md-3">
                 <h3 class="text-info" style="font-size: 20px;">برگزاری آموزش دفاعی</h3>
@@ -542,7 +615,7 @@
             </div>
         </div>
 
-        {{--برنامه انس با قرآن و عترت--}}
+        --}}{{--برنامه انس با قرآن و عترت--}}{{--
         <div class="row">
             <div class="col-md-3">
                 <h3 class="text-info" style="font-size: 20px;">برنامه انس با قرآن و عترت</h3>
@@ -589,7 +662,7 @@
             </div>
         </div>
 
-        {{--محفل انس و وعظ--}}
+        --}}{{--محفل انس و وعظ--}}{{--
         <div class="row">
             <div class="col-md-3">
                 <h3 class="text-info" style="font-size: 20px;">محفل انس و وعظ</h3>
@@ -635,7 +708,7 @@
                             </div>
 
                         </div>
-                    </div>
+                    </div>--}}
                 </div>
             </div>
         </div>

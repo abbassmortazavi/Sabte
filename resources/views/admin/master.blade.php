@@ -281,7 +281,7 @@
                         <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i>گزارش گیری<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="flot.html">گزارش کاربر</a>
+                                <a href="{{ route('report.index') }}">گزارش کاربر</a>
                             </li>
                             <li>
                                 <a href="morris.html">Morris.js Charts</a>
@@ -368,7 +368,7 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Dashboard</h1>
+                <h1 class="page-header">پنل مدیریت</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>

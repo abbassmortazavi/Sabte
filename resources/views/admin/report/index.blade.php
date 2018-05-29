@@ -20,20 +20,23 @@
                         @endforeach
                     </select>
                     <label for="sel1" style="float: right;padding-left: 15px;">تاریخ مورد نظر خود را انتخاب کنید:</label>
-                    <input type="text" name="date_now" placeholder="dark" id="pdpDark" class="form-control" style="width: 20%;">
-                    {{--<input type="text" name="date_last" placeholder="dark" id="pdpDark1" class="form-control" />--}}
+                    <input type="text" name="startDate" placeholder="dark" id="pdpDark" class="form-control" style="width: 20%;">
+                </div>
 
+                <div class="form-group" style="float: left;margin-left: 143px;">
+                    <label for="sel1" style="float: right;">تاریخ پایان:</label>
+                    <input type="text" name="endDate" placeholder="dark" id="pdpDark1" class="form-control" style="width: 90%;float: left;">
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-primary pull-left">
+                    <input type="submit" class="btn btn-primary pull-left" style="margin-top: 86px;">
                 </div>
             </form>
         </div>
     </div>
 
 
-    <div class="row">
+    {{--<div class="row">
         <div class="col-md-12">
             <form action="{{ route('print') }}" method="post">
                 {{ csrf_field() }}
@@ -45,8 +48,8 @@
                         @endforeach
                     </select>
                     <label for="sel1" style="float: right;padding-left: 15px;">تاریخ مورد نظر خود را انتخاب کنید:</label>
-                    <input type="text" name="date_now" placeholder="dark" id="pdpDark1" class="form-control" style="width: 20%;">
-                    {{--<input type="text" name="date_last" placeholder="dark" id="pdpDark1" class="form-control" />--}}
+                    <input type="text" name="endDate" placeholder="dark" id="pdpDark1" class="form-control" style="width: 20%;">
+                    --}}{{--<input type="text" name="date_last" placeholder="dark" id="pdpDark1" class="form-control" />--}}{{--
 
                 </div>
 
@@ -55,7 +58,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div>--}}
 
 
 @endsection
@@ -66,6 +69,7 @@
     <script type="text/javascript">
         $(function () {
             $("#pdpDark").persianDatepicker({ theme: "dark" , formatDate: "YYYY-0M-0D" });
+            //$("#pdpDark").persianDatepicker({ theme: "dark" , formatDate: "YYYY-MM-DD" });
             $("#pdpDark1").persianDatepicker({ theme: "dark",formatDate: "YYYY-0M-0D" });
         });
     </script>

@@ -96,27 +96,103 @@ class ReportController extends Controller
     public function findUser(Request $request)
     {
 
-        $date = jDateTime::createCarbonFromFormat('Y-m-d',$request->date_now)->toDateString();
+        /*$date = jDateTime::createCarbonFromFormat('Y-m-d',$request->date_now)->toDateString();
 
-        $orders = DB::table('sabtes')
-            ->where('user_id' , $request->user_id)//
-            ->where('tarikh_sabt' , $date)
-           ->select(DB::raw('SUM(ba_hozore2) as ba_hozore2,SUM(darsad_nazm) as darsad_nazm,sum(darsad_rezayat_mehmanan) as darsad_rezayat_mehmanan,
-           SUM(tedad_mehmanan_in_mah) as tedad_mehmanan_in_mah,SUM(darsad_nezafat) as darsad_nezafat,SUM(darsad_nezafat_dar_class) as darsad_nezafat_dar_class,
-           SUM(masahat_tolid_sabzijat) as masahat_tolid_sabzijat,SUM(madrese_elmiye) as madrese_elmiye,sum(tedad_jalasat_in_mah_khabgah) as tedad_jalasat_in_mah_khabgah,
-           SUM(tedad_derakhtan) as tedad_derakhtan,SUM(tedade_hafezin) as tedade_hafezin,SUM(tedad_goldan_tabiee) as tedad_goldan_tabiee'))
-           ->first();
+
+        $timestemp = $request->date_now;
+
+        $month = Carbon::createFromFormat('Y-m-d H:i:s' , $timestemp)->month;*/
+        $startDate = jDateTime::createCarbonFromFormat('Y-m-d',$request->startDate)->toDateString();
+        $endDate = jDateTime::createCarbonFromFormat('Y-m-d',$request->endDate)->toDateString();
 
         $kols = DB::table('sabtes')
             ->where('user_id' , $request->user_id)
-            ->where('tarikh_sabt' , $date)
-            ->select('saat_khab','saat_bidari','neshat_dar_sahar','barname_sobhgahi_sobhane','tedad_goldan_tabiee','rozhaye_nezafat',
-                'saat_kar_ketabkhune','name_masoul_khabgah','name_masoul_motahel')->get();
+            ->whereBetween('tarikh_sabt' , array($startDate , $endDate))
+            ->select('neshat_dar_sahar' , 'barname_sobhgahi_sobhane')->get()->toArray();
 
 
+        //$neshat_dar_sahars = array_count_values($neshat_dar_sahar);
+
+       // $key = array_search('آبجوش', array_column($kols, 'neshat_dar_sahar'));
+
+
+        //neshat_dar_sahar
+        $neshat_dar_sahars = array_column($kols, 'neshat_dar_sahar');
+        $neshat_dar_sahar = array();
+        foreach ($neshat_dar_sahars as $dar_sahar)
+        {
+            array_push($neshat_dar_sahar , $dar_sahar);
+        }
+        $neshat_dar_saharss = implode(',' ,$neshat_dar_sahar);
+        $neshat_dar_sahars = explode(',' , $neshat_dar_saharss);
+        $neshat_dar_saharsss = array_count_values($neshat_dar_sahars);
+        foreach ($neshat_dar_saharsss as $key=>$value)
+        {
+            switch ($key){
+                case "آبجوش":
+                    //$abjosh = $value;
+                    $data['abJosh'] = $value;
+                    break;
+                case "چای":
+                    //$chai = $value;
+                    $data['chai'] = $value;
+                    break;
+                case "دمنوش":
+                    //$damNosh = $value;
+                    $data['damNosh'] = $value;
+                    break;
+            }
+        }
+
+
+
+
+        //barname_sobhgahi_sobhane
+        $barname_sobhgahi_sobhanes = array_column($kols, 'barname_sobhgahi_sobhane');
+        $barname_sobhgahi_sobhane = array();
+        foreach ($barname_sobhgahi_sobhanes as $sobhane)
+        {
+            array_push($barname_sobhgahi_sobhane , $sobhane);
+        }
+        $barname_sobhgahi_sobhanes = implode(',' ,$barname_sobhgahi_sobhane);
+        $barname_sobhgahi_sobhaness = explode(',' , $barname_sobhgahi_sobhanes);
+        $barname_sobhgahi_sobhanesss = array_count_values($barname_sobhgahi_sobhaness);
+        foreach ($barname_sobhgahi_sobhanesss as $key1=>$value1)
+        {
+
+            switch ($key1){
+                case "نرمش":
+                    //$narmesh = $value1;
+                    $data['narMesh'] = $value1;
+                    break;
+                case "صبحانه":
+                    //$sobhanee = $value1;
+                    $data['sobhanee'] = $value1;
+                    break;
+                case "دعای امام زمان":
+                    //$doa = $value1;
+                    $data['doa'] = $value1;
+                    break;
+                case "قرائت قرآن":
+                    //$doa = $value1;
+                    $data['gharaat'] = $value1;
+                    break;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+/*
         //date now
         $data['date'] = jDateTime::strftime('Y-m-d', strtotime($date));
-
 
             $lists = array();
             foreach ($kols as $kol)
@@ -238,13 +314,17 @@ class ReportController extends Controller
         {
             array_push($name_masouls , $masoul_motahel);
         }
-        $data['name_masoul_motahel'] = implode(',' , $name_masouls);
+        $name_masoul_motahelss = implode(',' , $name_masouls);
+        $name_masoul = implode(',', array_unique(explode(',',$name_masoul_motahelss)));
+
+        $data['name_masoul_motahel'] = rtrim($name_masoul,',');*/
 
 
 
 
 
-        return view('admin.report.user' , compact('orders' , 'data'));
+
+        return view('admin.report.user' , compact('data'));
 
 
 
