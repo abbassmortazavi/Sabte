@@ -126,15 +126,154 @@
 
 
 
+                {{--اعیاد و عزا داری ها(داخل مدرسه)--}}
+                <div class="form-group" style="margin-top: 72px;">
+                    <label for="usr" style="direction: rtl;">اعیاد و عزا داری ها(داخل مدرسه):</label>
+
+                    <div class="form-group">
+                        <label for="usr">جشن ولادت حضرت زینب(س):</label>
+                        <input type="text" class="form-control" name="jashne_zeynab" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['jashne_zeynab'])){{ $data['jashne_zeynab']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">جلسه شهادت حضرت زهرا(س):</label>
+                        <input type="text" class="form-control" name="shahadate_zahra" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['shahadate_zahra'])){{ $data['shahadate_zahra']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">جشن پیروزی انقلاب اسلامی:</label>
+                        <input type="text" class="form-control" name="jashne_piruzi" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['jashne_piruzi'])){{ $data['jashne_piruzi']}}@endif">
+                    </div>
+                </div>
 
 
 
 
 
+                {{--اعیاد و عزا داری ها(خارج مدرسه)--}}
+                <div class="form-group" style="margin-top: 72px;">
+                    <label for="usr" style="direction: rtl;">اعیاد و عزا داری ها(خارج مدرسه):</label>
+
+                    <div class="form-group">
+                        <label for="usr">جشن ولادت حضرت زینب(س):</label>
+                        <input type="text" class="form-control" name="jashne_zeynab1" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['jashne_zeynab1'])){{ $data['jashne_zeynab1']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">جلسه شهادت حضرت زهرا(س):</label>
+                        <input type="text" class="form-control" name="shahadate_zahra1" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['shahadate_zahra1'])){{ $data['shahadate_zahra1']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">شرکت گروهی طلاب در راهپیمایی 22بهمن:</label>
+                        <input type="text" class="form-control" name="jashne_piruzi1" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['jashne_piruzi1'])){{ $data['jashne_piruzi1']}}@endif">
+                    </div>
+                </div>
 
 
 
 
+                {{--بصیرت دشمن شناسی و حفظ روحیه ی انقلابی--}}
+                <div class="form-group" style="margin-top: 72px;">
+                    <label for="usr" style="direction: rtl;">بصیرت دشمن شناسی و حفظ روحیه ی انقلابی:</label>
+
+                    <div class="form-group">
+                        <label for="usr">روزنامه:</label>
+                        <input type="text" class="form-control" name="magazine" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['magazine'])){{ $data['magazine']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">پخش اخبار:</label>
+                        <input type="text" class="form-control" name="pakhshe_akhbar" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['pakhshe_akhbar'])){{ $data['pakhshe_akhbar']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">پخش کلیپ های بصیرتی:</label>
+                        <input type="text" class="form-control" name="pakhshe_clip" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['pakhshe_clip'])){{ $data['pakhshe_clip']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">تکبیرات بعداز نماز:</label>
+                        <input type="text" class="form-control" name="takbir" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['takbir'])){{ $data['takbir']}}@endif">
+                    </div>
+                </div>
+
+
+                {{--شام طلاب--}}
+                <div class="form-group" style="margin-top: 72px;">
+                    <label for="usr" style="direction: rtl;">شام طلاب:</label>
+
+                    <div class="form-group">
+                        <label for="usr">گروهی اجرا می شود:</label>
+                        <input type="text" class="form-control" name="gorohi" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['gorohi'])){{ $data['gorohi']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">فردی اجرا می شود:</label>
+                        <input type="text" class="form-control" name="fardi" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['fardi'])){{ $data['fardi']}}@endif">
+                    </div>
+                </div>
+
+
+                {{--حضور ناظر شب--}}
+                <div class="form-group" style="margin-top: 72px;">
+                    <label for="usr" style="direction: rtl;">حضور ناظر شب:</label>
+
+                    <div class="form-group">
+                        <label for="usr">طلبه:</label>
+                        <input type="text" class="form-control" name="talabe" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['talabe'])){{ $data['talabe']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">استاد:</label>
+                        <input type="text" class="form-control" name="ostad" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['ostad'])){{ $data['ostad']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">معاون:</label>
+                        <input type="text" class="form-control" name="moaven" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['moaven'])){{ $data['moaven']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">مدیر:</label>
+                        <input type="text" class="form-control" name="modir" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['modir'])){{ $data['modir']}}@endif">
+                    </div>
+                </div>
+
+
+                {{--اسلحه--}}
+                <div class="form-group" style="margin-top: 72px;">
+                    <label for="usr" style="direction: rtl;">اسلحه:</label>
+
+                    <div class="form-group">
+                        <label for="usr">میدان تیر:</label>
+                        <input type="text" class="form-control" name="meydan_tir" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['meydan_tir'])){{ $data['meydan_tir']}}@endif">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="usr">آموزش اسلحه:</label>
+                        <input type="text" class="form-control" name="amuzeshe_aslahe" id="usr"
+                               style="width: 20%; float: left;" value="@if(isset($data['amuzeshe_aslahe'])){{ $data['amuzeshe_aslahe']}}@endif">
+                    </div>
+
+                </div>
 
 
 

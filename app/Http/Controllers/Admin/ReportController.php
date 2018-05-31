@@ -108,7 +108,10 @@ class ReportController extends Controller
         $kols = DB::table('sabtes')
             ->where('user_id' , $request->user_id)
             ->whereBetween('tarikh_sabt' , array($startDate , $endDate))
-            ->select('neshat_dar_sahar' , 'barname_sobhgahi_sobhane')->get()->toArray();
+            ->select('neshat_dar_sahar' , 'barname_sobhgahi_sobhane' ,
+                'ayad_dakhel' , 'ayad_kharej' , 'basirat' , 'sham_tolab','nazere_shab')
+            ->get()
+            ->toArray();
 
 
         //$neshat_dar_sahars = array_count_values($neshat_dar_sahar);
@@ -183,141 +186,324 @@ class ReportController extends Controller
 
 
 
+        //ayad_dakhel
+        $ayad_dakhels = array_column($kols, 'ayad_dakhel');
+        $ayad_dakhel = array();
+        foreach ($ayad_dakhels as $dakhel)
+        {
+            array_push($ayad_dakhel , $dakhel);
+        }
+        $ayad_dakhelss = implode(',' ,$ayad_dakhel);
+        $ayad_dakhelsss = explode(',' , $ayad_dakhelss);
+        $ayad_dakhelssss = array_count_values($ayad_dakhelsss);
+        foreach ($ayad_dakhelssss as $key2=>$value2)
+        {
 
-
-
-
-
-
-
-/*
-        //date now
-        $data['date'] = jDateTime::strftime('Y-m-d', strtotime($date));
-
-            $lists = array();
-            foreach ($kols as $kol)
-            {
-                array_push($lists , $kol);
+            switch ($key2){
+                case "جشن ولادت حضرت زینب(س)":
+                    //$narmesh = $value1;
+                    $data['jashne_zeynab'] = $value2;
+                    break;
+                case "جلسه شهادت حضرت زهرا(س)":
+                    //$sobhanee = $value1;
+                    $data['shahadate_zahra'] = $value2;
+                    break;
+                case "جشن پیروزی انقلاب اسلامی":
+                    //$doa = $value1;
+                    $data['jashne_piruzi'] = $value2;
+                    break;
             }
-
-
-
-        //saat_khab
-        $saat_khabs = array_column($lists, 'saat_khab');
-        $saat_khabss = array();
-        foreach ($saat_khabs as $khab)
-        {
-            array_push($saat_khabss , $khab);
-        }
-        $data['saat_khab'] = implode(',' , $saat_khabss);
-
-
-        //rozhaye_nezafat
-        $rozhaye_nezafats = array_column($lists, 'rozhaye_nezafat');
-        $rozhaye_nezafatss = array();
-        foreach ($rozhaye_nezafats as $nezafat)
-        {
-            array_push($rozhaye_nezafatss , $nezafat);
-        }
-        $data['rozhaye_nezafat'] = implode(',' , $rozhaye_nezafatss);
-
-
-
-        //saat_kar_ketabkhune
-        $saat_kar_ketabkhunes = array_column($lists, 'saat_kar_ketabkhune');
-        $saat_kar_ketabkhuness = array();
-        foreach ($saat_kar_ketabkhunes as $ketabkhune)
-        {
-            array_push($saat_kar_ketabkhuness , $ketabkhune);
-        }
-        $data['saat_kar_ketabkhune'] = implode(',' , $saat_kar_ketabkhuness);
-
-
-
-        //saat_bidari
-        $saat_bidaris = array_column($lists, 'saat_bidari');
-        $saat_bidariss = array();
-        foreach ($saat_bidaris as $bidaris)
-        {
-            array_push($saat_bidariss , $bidaris);
-        }
-        $data['saat_bidari'] = implode(',' , $saat_bidariss);
-
-
-
-        //name_masoul_khabgah
-        $name_masoul_khabgahs = array_column($lists, 'name_masoul_khabgah');
-        $name_masoul_khabgahss = array();
-        foreach ($name_masoul_khabgahs as $khabgah)
-        {
-            array_push($name_masoul_khabgahss , $khabgah);
-        }
-        $khabgahs = implode(',' , $name_masoul_khabgahss);
-        $khabgahsss = implode(',', array_unique(explode(',',$khabgahs)));
-        $data['name_masoul_khabgah'] = rtrim($khabgahsss,',');
-
-
-
-
-        //neshat_dar_sahar
-        $neshat_dar_sahars = array_unique(array_column($lists, 'neshat_dar_sahar'));
-
-        $neshat_dar_saharss = array();
-        foreach ($neshat_dar_sahars as $dar_sahar)
-        {
-            array_push($neshat_dar_saharss , $dar_sahar);
         }
 
-        $neshat_dar_sahar = implode(',' , $neshat_dar_saharss);
-
-        $neshat = implode(',', array_unique(explode(',',$neshat_dar_sahar)));
-
-        $data['neshat_dar_sahar'] = rtrim($neshat,',');
 
 
-        //barname_sobhgahi_sobhane
-        $barname_sobhgahi_sobhanes = array_unique(array_column($lists, 'barname_sobhgahi_sobhane'));
 
-        $barname_sobhgahi_sobhaness = array();
-        foreach ($barname_sobhgahi_sobhanes as $sobh)
+        //ayad_kharej
+        $ayad_kharejs = array_column($kols, 'ayad_kharej');
+        $ayad_kharej = array();
+        foreach ($ayad_kharejs as $kharej)
         {
-            array_push($barname_sobhgahi_sobhaness , $sobh);
+            array_push($ayad_kharej , $kharej);
         }
+        $ayad_kharejss = implode(',' ,$ayad_kharej);
+        $ayad_kharejsss = explode(',' , $ayad_kharejss);
+        $ayad_kharejssss = array_count_values($ayad_kharejsss);
+        foreach ($ayad_kharejssss as $key3=>$value3)
+        {
 
-        $barname_sobhgahi_sobhane = implode(',' , $barname_sobhgahi_sobhaness);
-
-        $sobhane = implode(',', array_unique(explode(',',$barname_sobhgahi_sobhane)));
-
-        $data['barname_sobhgahi_sobhane'] = rtrim($sobhane,',');
-
-
-
-
-
-
-
-
-        //tedad_goldan_tabiee
-        $tedad_goldan_tabiees = array_column($lists, 'tedad_goldan_tabiee');
-            $tedad_tabiees = array();
-            foreach ($tedad_goldan_tabiees as $tabiee)
-            {
-                array_push($tedad_tabiees , $tabiee);
+            switch ($key3){
+                case "جشن ولادت حضرت زینب(س)":
+                    //$narmesh = $value1;
+                    $data['jashne_zeynab1'] = $value3;
+                    break;
+                case "جلسه شهادت حضرت زهرا(س)":
+                    //$sobhanee = $value1;
+                    $data['shahadate_zahra1'] = $value3;
+                    break;
+                case "شرکت گروهی طلاب در راهپیمایی 22بهمن":
+                    //$doa = $value1;
+                    $data['jashne_piruzi1'] = $value3;
+                    break;
             }
-        $data['tedad_goldan_tabiee'] = implode(',' , $tedad_tabiees);
-
-
-        //name_masoul_motahel
-        $name_masoul_motahels = array_column($lists, 'name_masoul_motahel');
-        $name_masouls = array();
-        foreach ($name_masoul_motahels as $masoul_motahel)
-        {
-            array_push($name_masouls , $masoul_motahel);
         }
-        $name_masoul_motahelss = implode(',' , $name_masouls);
-        $name_masoul = implode(',', array_unique(explode(',',$name_masoul_motahelss)));
 
-        $data['name_masoul_motahel'] = rtrim($name_masoul,',');*/
+
+        //basirat
+        $basirats = array_column($kols, 'basirat');
+        $basiratt = array();
+        foreach ($basirats as $basirat)
+        {
+            array_push($basiratt , $basirat);
+        }
+        $basiratss = implode(',' ,$basiratt);
+        $basiratsss = explode(',' , $basiratss);
+        $basiratssss = array_count_values($basiratsss);
+        foreach ($basiratssss as $key4=>$value4)
+        {
+
+            switch ($key4){
+                case "روزنامه":
+                    //$narmesh = $value1;
+                    $data['magazine'] = $value4;
+                    break;
+                case "پخش اخبار":
+                    //$sobhanee = $value1;
+                    $data['pakhshe_akhbar'] = $value4;
+                    break;
+                case "پخش کلیپ های بصیرتی":
+                    //$doa = $value1;
+                    $data['pakhshe_clip'] = $value4;
+                    break;
+                    case "تکبیرات بعداز نماز":
+                    //$doa = $value1;
+                    $data['takbir'] = $value4;
+                    break;
+            }
+        }
+
+
+
+
+        //sham_tolab
+        $sham_tolabs = array_column($kols, 'sham_tolab');
+        $sham_tolab = array();
+        foreach ($sham_tolabs as $tolab)
+        {
+            array_push($sham_tolab , $tolab);
+        }
+        $sham_tolabss = implode(',' ,$sham_tolab);
+        $sham_tolabsss = explode(',' , $sham_tolabss);
+        $sham_tolabssss = array_count_values($sham_tolabsss);
+        foreach ($sham_tolabssss as $key5=>$value5)
+        {
+
+            switch ($key5){
+                case "گروهی اجرا می شود":
+                    //$narmesh = $value1;
+                    $data['gorohi'] = $value5;
+                    break;
+                case "فردی اجرا می شود":
+                    //$sobhanee = $value1;
+                    $data['fardi'] = $value5;
+                    break;
+            }
+        }
+
+
+
+
+        //nazere_shab
+        $nazere_shabs = array_column($kols, 'nazere_shab');
+        $nazere_shab = array();
+        foreach ($nazere_shabs as $shab)
+        {
+            array_push($nazere_shab , $shab);
+        }
+        $nazere_shabss = implode(',' ,$nazere_shab);
+        $nazere_shabsss = explode(',' , $nazere_shabss);
+        $nazere_shabssss = array_count_values($nazere_shabsss);
+        foreach ($nazere_shabssss as $key6=>$value6)
+        {
+
+            switch ($key6){
+                case "طلبه":
+                    //$narmesh = $value1;
+                    $data['talabe'] = $value6;
+                    break;
+                case "استاد":
+                    //$sobhanee = $value1;
+                    $data['ostad'] = $value6;
+                    break;
+                case "معاون":
+                    //$sobhanee = $value1;
+                    $data['moaven'] = $value6;
+                    break;
+                case "مدیر":
+                    //$sobhanee = $value1;
+                    $data['modir'] = $value6;
+                    break;
+            }
+        }
+
+
+
+        //aslahe
+        $aslahes = array_column($kols, 'aslahe');
+        $aslahe = array();
+        foreach ($aslahes as $aslahe)
+        {
+            array_push($aslahe , $aslahe);
+        }
+        $aslahess = implode(',' ,$aslahe);
+        $aslahesss = explode(',' , $aslahess);
+        $aslahessss = array_count_values($aslahesss);
+        foreach ($aslahessss as $key7=>$value7)
+        {
+
+            switch ($key7){
+                case "میدان تیر":
+                    //$sobhanee = $value1;
+                    $data['meydan_tir'] = $value7;
+                    break;
+                case "آموزش اسلحه":
+                    //$narmesh = $value1;
+                    $data['amuzeshe_aslahe'] = $value7;
+                    break;
+            }
+        }
+
+
+
+
+
+        /*
+                //date now
+                $data['date'] = jDateTime::strftime('Y-m-d', strtotime($date));
+
+                    $lists = array();
+                    foreach ($kols as $kol)
+                    {
+                        array_push($lists , $kol);
+                    }
+
+
+
+                //saat_khab
+                $saat_khabs = array_column($lists, 'saat_khab');
+                $saat_khabss = array();
+                foreach ($saat_khabs as $khab)
+                {
+                    array_push($saat_khabss , $khab);
+                }
+                $data['saat_khab'] = implode(',' , $saat_khabss);
+
+
+                //rozhaye_nezafat
+                $rozhaye_nezafats = array_column($lists, 'rozhaye_nezafat');
+                $rozhaye_nezafatss = array();
+                foreach ($rozhaye_nezafats as $nezafat)
+                {
+                    array_push($rozhaye_nezafatss , $nezafat);
+                }
+                $data['rozhaye_nezafat'] = implode(',' , $rozhaye_nezafatss);
+
+
+
+                //saat_kar_ketabkhune
+                $saat_kar_ketabkhunes = array_column($lists, 'saat_kar_ketabkhune');
+                $saat_kar_ketabkhuness = array();
+                foreach ($saat_kar_ketabkhunes as $ketabkhune)
+                {
+                    array_push($saat_kar_ketabkhuness , $ketabkhune);
+                }
+                $data['saat_kar_ketabkhune'] = implode(',' , $saat_kar_ketabkhuness);
+
+
+
+                //saat_bidari
+                $saat_bidaris = array_column($lists, 'saat_bidari');
+                $saat_bidariss = array();
+                foreach ($saat_bidaris as $bidaris)
+                {
+                    array_push($saat_bidariss , $bidaris);
+                }
+                $data['saat_bidari'] = implode(',' , $saat_bidariss);
+
+
+
+                //name_masoul_khabgah
+                $name_masoul_khabgahs = array_column($lists, 'name_masoul_khabgah');
+                $name_masoul_khabgahss = array();
+                foreach ($name_masoul_khabgahs as $khabgah)
+                {
+                    array_push($name_masoul_khabgahss , $khabgah);
+                }
+                $khabgahs = implode(',' , $name_masoul_khabgahss);
+                $khabgahsss = implode(',', array_unique(explode(',',$khabgahs)));
+                $data['name_masoul_khabgah'] = rtrim($khabgahsss,',');
+
+
+
+
+                //neshat_dar_sahar
+                $neshat_dar_sahars = array_unique(array_column($lists, 'neshat_dar_sahar'));
+
+                $neshat_dar_saharss = array();
+                foreach ($neshat_dar_sahars as $dar_sahar)
+                {
+                    array_push($neshat_dar_saharss , $dar_sahar);
+                }
+
+                $neshat_dar_sahar = implode(',' , $neshat_dar_saharss);
+
+                $neshat = implode(',', array_unique(explode(',',$neshat_dar_sahar)));
+
+                $data['neshat_dar_sahar'] = rtrim($neshat,',');
+
+
+                //barname_sobhgahi_sobhane
+                $barname_sobhgahi_sobhanes = array_unique(array_column($lists, 'barname_sobhgahi_sobhane'));
+
+                $barname_sobhgahi_sobhaness = array();
+                foreach ($barname_sobhgahi_sobhanes as $sobh)
+                {
+                    array_push($barname_sobhgahi_sobhaness , $sobh);
+                }
+
+                $barname_sobhgahi_sobhane = implode(',' , $barname_sobhgahi_sobhaness);
+
+                $sobhane = implode(',', array_unique(explode(',',$barname_sobhgahi_sobhane)));
+
+                $data['barname_sobhgahi_sobhane'] = rtrim($sobhane,',');
+
+
+
+
+
+
+
+
+                //tedad_goldan_tabiee
+                $tedad_goldan_tabiees = array_column($lists, 'tedad_goldan_tabiee');
+                    $tedad_tabiees = array();
+                    foreach ($tedad_goldan_tabiees as $tabiee)
+                    {
+                        array_push($tedad_tabiees , $tabiee);
+                    }
+                $data['tedad_goldan_tabiee'] = implode(',' , $tedad_tabiees);
+
+
+                //name_masoul_motahel
+                $name_masoul_motahels = array_column($lists, 'name_masoul_motahel');
+                $name_masouls = array();
+                foreach ($name_masoul_motahels as $masoul_motahel)
+                {
+                    array_push($name_masouls , $masoul_motahel);
+                }
+                $name_masoul_motahelss = implode(',' , $name_masouls);
+                $name_masoul = implode(',', array_unique(explode(',',$name_masoul_motahelss)));
+
+                $data['name_masoul_motahel'] = rtrim($name_masoul,',');*/
 
 
 
