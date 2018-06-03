@@ -373,9 +373,6 @@ class ReportController extends Controller
         }
 
 
-
-
-
         /*
                 //date now
                 $data['date'] = jDateTime::strftime('Y-m-d', strtotime($date));
@@ -478,11 +475,6 @@ class ReportController extends Controller
 
 
 
-
-
-
-
-
                 //tedad_goldan_tabiee
                 $tedad_goldan_tabiees = array_column($lists, 'tedad_goldan_tabiee');
                     $tedad_tabiees = array();
@@ -507,13 +499,7 @@ class ReportController extends Controller
 
 
 
-
-
-
         return view('admin.report.user' , compact('data'));
-
-
-
 
 
 
@@ -522,6 +508,57 @@ class ReportController extends Controller
         $dt = $v->DateTime();*/
         //dd($t);
     }
+
+    public function usersAll()
+    {
+        $users = User::all();
+        return view('admin.report.all-user' , compact('users'));
+    }
+
+    public function usersReport(Request $request)
+    {
+        $kols = Sabte::whereIn('user_id' , $request->allUser)->select('user_id','neshat_dar_sahar' , 'barname_sobhgahi_sobhane')->get()->toArray();
+
+
+
+        //neshat_dar_sahar
+        $neshat_dar_sahars = array_column($kols, 'neshat_dar_sahar');
+        $neshat_dar_sahar = array();
+        foreach ($neshat_dar_sahars as $dar_sahar)
+        {
+            array_push($neshat_dar_sahar , $dar_sahar);
+        }
+        $neshat_dar_saharss = implode(',' ,$neshat_dar_sahar);
+        $neshat_dar_sahars = explode(',' , $neshat_dar_saharss);
+        $neshat_dar_saharsss = array_count_values($neshat_dar_sahars);
+        foreach ($neshat_dar_saharsss as $key=>$value)
+        {
+            switch ($key){
+                case "آبجوش":
+                    //$abjosh = $value;
+                    $data['abJosh'] = $value;
+                    break;
+                case "چای":
+                    //$chai = $value;
+                    $data['chai'] = $value;
+                    break;
+                case "دمنوش":
+                    //$damNosh = $value;
+                    $data['damNosh'] = $value;
+                    break;
+            }
+        }
+
+
+        return view('admin.report.usersReport' , compact('data'));
+    }
+
+
+
+
+
+
+
 
     public function printPreview(Request $request)
     {
@@ -660,5 +697,6 @@ class ReportController extends Controller
         return $pdf->download('print.pdf');
 
     }
+
 
 }

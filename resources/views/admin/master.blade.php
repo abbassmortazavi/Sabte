@@ -284,7 +284,7 @@
                                 <a href="{{ route('report.index') }}">گزارش کاربر</a>
                             </li>
                             <li>
-                                <a href="morris.html">Morris.js Charts</a>
+                                <a href="{{ route('usersAll') }}">گزارش کلی کاربر</a>
                             </li>
                         </ul>
                         <!-- /.nav-second-level -->

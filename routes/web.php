@@ -36,8 +36,10 @@ Route::group(['namespace' => 'Auth'] , function (){
 Route::group(['namespace' => 'Admin','middleware' => 'admin' , 'prefix' => 'admin'], function (){
     $this->get('/panel' , 'PanelController@index')->name('panel');
     $this->resource('/report' , 'ReportController');
-    $this->post('/print' , 'ReportController@printPreview')->name('print');
+    //$this->post('/print' , 'ReportController@printPreview')->name('print');
     $this->post('/user' , 'ReportController@findUser')->name('findUser');
+    $this->get('user-all' , 'ReportController@usersAll')->name('usersAll');
+    $this->post('usersReport' , 'ReportController@usersReport')->name('usersReport');
 });
 
 
